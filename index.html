@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    
+    <body>
+        <div id="form">
+            <label for="mrk" style= "margin-top: 2%;margin-left: 2%;">Mercado</label>
+            <input type="text" class="form-control" aria-label="Mercado" aria-describedby="inputGroup-sizing-sm" value="" id="mrk" 
+            style= "margin-left: 2%;width: 30%" onfocusout="get()">
+            <small id="mrkHelp" class="form-text text-muted"  style= "margin-left: 2%;"> Digite o código do mercado a ser buscado </small>
+   
+            <table class="table" style= "margin-top: 5%;font-size: 12px; width:50%;">
+                <thead>
+                    <tr>
+                    <th scope="col">Exchange</th>
+                    <th scope="col">High</th>
+                    <th scope="col">Low</th>
+                    <th scope="col">Volume</th>
+                    <th scope="col">Bid</th>
+                    <th scope="col">Ask</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo_tabela">
+                    
+                </tbody>
+            </table> 
+        </div>
+    </body>
+
+    <script src="script.js">
+      
+    </script>
+</html>
+
