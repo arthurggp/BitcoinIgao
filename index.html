@@ -9,32 +9,104 @@
     </head>
     
     <body>
-        <div id="form">
-            <label for="mrk" style= "margin-top: 2%;margin-left: 2%;">Mercado</label>
-            <input type="text" class="form-control" aria-label="Mercado" aria-describedby="inputGroup-sizing-sm" value="" id="mrk" 
-            style= "margin-left: 2%;width: 30%" onfocusout="get()">
-            <small id="mrkHelp" class="form-text text-muted"  style= "margin-left: 2%;"> Digite o código do mercado a ser buscado </small>
-   
-            <table class="table" style= "margin-top: 5%;font-size: 12px; width:50%;">
-                <thead>
+        <div id="form" style="margin-left:2%">
+            <label style="margin-top:1%"><h3>COTAÇÕES</h3></label>
+
+            <table class="table table table-sm table-bordered" style= "font-size: 12px; width:50%;">
+                <thead class="thead-dark">
                     <tr>
-                    <th scope="col">Exchange</th>
-                    <th scope="col">High</th>
-                    <th scope="col">Low</th>
-                    <th scope="col">Volume</th>
-                    <th scope="col">Bid</th>
-                    <th scope="col">Ask</th>
+                        <th scope="col">Market</th>
+                        <th scope="col">Exchange</th>
+                        <th scope="col">High</th>
+                        <th scope="col">Low</th>
+                        <th scope="col">Volume</th>
+                        <th scope="col">Bid</th>
+                        <th scope="col">Ask</th>
                     </tr>
                 </thead>
                 <tbody id="corpo_tabela">
                     
                 </tbody>
             </table> 
-        </div>
+
+            <label><h4>LTC</h4></label>
+            <table class="table table table-sm table-bordered" style= "font-size: 12px; width:50%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Maior BID</th>
+                        <th scope="col">Menor ASK</th>
+                        <th scope="col">Diferença</th>
+                    </tr>
+                </thead>
+                <tbody id="LTC">
+                    
+                </tbody>
+            </table> 
+
+            <label><h4>DOGE</h4></label>
+            <table class="table table table-sm table-bordered" style= "font-size: 12px; width:50%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Menor BID</th>
+                        <th scope="col">Maior ASK</th>
+                        <th scope="col">Diferença</th>
+                    </tr>
+                </thead>
+                <tbody id="DOGE">
+                    
+                </tbody>
+            </table> 
+
+            <label><h4>XMR</h4></label>
+            <table class="table table table-sm table-bordered" style= "font-size: 12px; width:50%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Menor BID</th>
+                        <th scope="col">Maior ASK</th>
+                        <th scope="col">Diferença</th>
+                    </tr>
+                </thead>
+                <tbody id="XMR">
+                    
+                </tbody>
+            </table> 
+
+            <label><h4>TAXAS</h4></label>
+            <table class="table table table-sm table-bordered" style= "font-size: 12px; width:50%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">MOEDA</th>
+                        <th scope="col">TRADEOGRE</th>
+                        <th scope="col">CREX24</th>
+                        <th scope="col">SATOSHI</th>
+                    </tr>
+                </thead>
+                <tbody id="X">
+                    <tr>
+                        <th scope="col">LTC</th>
+                        <th scope="col">0.00100000</th>
+                        <th scope="col">0.00200000</th>
+                        <th scope="col">0.02000000</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">DOGE</th>
+                        <th scope="col">3.03129372</th>
+                        <th scope="col">5.00000000</th>
+                        <th scope="col">3.00000000</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">XMR</th>
+                        <th scope="col">0.00251169</th>
+                        <th scope="col">0.02000000</th>
+                        <th scope="col">0.01000000</th>
+                    </tr>
+                </tbody>
+            </table> 
+
+   
     </body>
 
-    <script src="script.js">
-      
-    </script>
+    <script src="script2.js"></script>
+    <!--script src="script.js"></script-->
 </html>
 

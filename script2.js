@@ -3,7 +3,7 @@
   //fluxo do código
   // get() -> Requests(url,mercado) -> handleResponse(dados,mercado)
 
-  window.onload = function() {
+window.onload = function() {
     var json_data;
     var calc_data;
     var usd_data;
@@ -22,12 +22,11 @@
 
 
     readTextFile(path);
-    json_data = JSON.parse(__data);
-
     readCalcFile(path2);
-    calc_data = JSON.parse(__data2);
-
     readUSDFile(path3);
+
+    json_data = JSON.parse(__data);
+    calc_data = JSON.parse(__data2);
     usd_data = JSON.parse(__data3);
 
 
@@ -37,70 +36,61 @@
 
 };
 
-function requestPadrao(url,data,success,dataType){
-    $.ajax({
-        url: url,
-        data: data,
-        success: success,
-        dataType: dataType
-      });
-}
-
 //requisição cotaçoes
-function readTextFile(file)
+function readTextFile(url)
 {
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
+    $.ajax({
+
+        url : url,
+        type : 'GET',
+        dataType:'json',
+        async: false,
+        success : function(data) {              
+            __data = data;
+        },
+        error : function(request,error)
         {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                __data = allText;
             
-            }
         }
-    }
-    rawFile.send(null);
+        
+    });
 }
 
 //le arquivo de calculos
-function readCalcFile(file)
+function readCalcFile(url)
 {
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
+    $.ajax({
+
+        url : url,
+        type : 'GET',
+        dataType:'json',
+        async: false,
+        success : function(data) {              
+            __data2 = data;
+        },
+        error : function(request,error)
         {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                __data2 = allText;
-            }
+            
         }
-    }
-    rawFile.send(null);
+    });
 }
 
-function readUSDFile(file)
+function readUSDFile(url)
 {
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
+    $.ajax({
+
+        url : url,
+        type : 'GET',
+        dataType:'json',
+        async: false,
+        success : function(data) {              
+            __data3 = data;
+        },
+        error : function(request,error)
         {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                __data3 = allText;
-            }
+            
         }
-    }
-    rawFile.send(null);
+    });
 }
 
 function preencheTabela1(array){
@@ -126,7 +116,6 @@ function preencheTabela2(array,usd){
     var linhas = '';
     var cor = "red";
     var multiplier = 0.00000001; 
-    var taxa_ltc = 0.002; //0.2%
 
         if(array.resultadoLTC.indexOf(".") == -1){
             array.resultadoLTC = (parseFloat(array.resultadoLTC) * multiplier).toString();
@@ -140,15 +129,11 @@ function preencheTabela2(array,usd){
             array.resultadoXMR = (parseFloat(array.resultadoXMR) * multiplier).toString();
         }
 
+        //LTC
         linhas = '<tr>';
         linhas += ' <th scope="col" id="i">' + array.maiorBidLTC  + '</th>';
         linhas += ' <th scope="col" id="i">' + array.menorAskLTC  + '</th>';
-
-        if(array.resultadoLTC.indexOf("-") == -1){
-            cor ="green";
-        }else
-            cor = "red";
-        
+        if(array.resultadoLTC.indexOf("-") == -1){ cor ="green";}else{ cor = "red";}       
         linhas += ' <th scope="col" id="i" style="color:'+cor+'">' + array.resultadoLTC + '</th>';
         linhas += '</tr>';
         linhas += '<tr>';
@@ -158,15 +143,13 @@ function preencheTabela2(array,usd){
         linhas += '</tr>'; 
         $('#LTC').html(linhas);
 
+        //DOGE
         linhas = '<tr>';
         linhas += ' <th scope="col" id="i">' + array.maiorBidDOG  + '</th>';
         linhas += ' <th scope="col" id="i">' + array.menorAskDOG  + '</th>';
-        if(array.resultadoDOG.indexOf("-") == 0){
-           cor = "red";
-        }else cor = "green";
+        if(array.resultadoDOG.indexOf("-") == 0){cor = "red";}else {cor = "green";}
         linhas += ' <th scope="col" id="i" style="color:'+cor+'">' + array.resultadoDOG + '</th>';
         linhas += '</tr>';
-
         linhas += '<tr>';
         linhas += ' <th scope="col" id="i">' + array.mercadoBidDOG  + '</th>';
         linhas += ' <th scope="col" id="i">' + array.mercadoAskDOG  + '</th>';
@@ -174,12 +157,11 @@ function preencheTabela2(array,usd){
         linhas += '</tr>';
         $('#DOGE').html(linhas);
 
+        //XMR
         linhas = '<tr>';
         linhas += ' <th scope="col" id="i">' + array.maiorBidXMR + '</th>';
         linhas += ' <th scope="col" id="i">' + array.menorAskXMR + '</th>';
-        if(array.resultadoXMR.indexOf("-") == -1){
-            cor = "green";
-        }else cor = "red";
+        if(array.resultadoXMR.indexOf("-") == -1){cor = "green";}else {cor = "red";}
         linhas += ' <th scope="col" id="i" style="color:'+cor+'">' + array.resultadoXMR+ '</th>';
         linhas += '</tr>';
         linhas += '<tr>';
@@ -221,4 +203,4 @@ function toFixed(x) {
       .test(value))
       return Number(value);
   return NaN;
-}
+};
